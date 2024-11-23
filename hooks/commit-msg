@@ -1,0 +1,8 @@
+#!/bin/sh
+COMMIT_MSG_FILE=$1
+COMMIT_MSG=$(cat $COMMIT_MSG_FILE)
+
+if ! echo "$COMMIT_MSG" | grep -qE '^DJ-[0-9]{1,5}: '; then
+    echo "Commit message должен начинаться с префикса 'DJ-X: ', где X - номер таски от 0 до 100000!"
+    exit 1
+fi
